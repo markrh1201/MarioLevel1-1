@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <TieredCompilation>false</TieredCompilation>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="State\GameStates\**" />
+    <Compile Remove="State\PlayerStates\**" />
+    <Compile Remove="State\PowerStates\**" />
+    <EmbeddedResource Remove="State\GameStates\**" />
+    <EmbeddedResource Remove="State\PlayerStates\**" />
+    <EmbeddedResource Remove="State\PowerStates\**" />
+    <None Remove="State\GameStates\**" />
+    <None Remove="State\PlayerStates\**" />
+    <None Remove="State\PowerStates\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Icon.ico" />
+    <None Remove="Icon.bmp" />
+    <None Remove="States\" />
+    <None Remove="State\" />
+    <None Remove="Commands\PlayerCommands\" />
+    <None Remove="Commands\GameCommands\" />
+    <None Remove="State\PlayerStates\" />
+    <None Remove="State\GameStates\" />
+    <None Remove="State\PowerStates\" />
+    <None Remove="Commands\PowerCommands\" />
+    <None Remove="GameObject\Enemies\" />
+    <None Remove="Collisions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico" />
+    <EmbeddedResource Include="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CodeReviews\" />
+    <Folder Include="Commands\PlayerCommands\" />
+    <Folder Include="Commands\GameCommands\" />
+    <Folder Include="Commands\PowerCommands\" />
+    <Folder Include="bin\Debug\net6.0\" />
+    <Folder Include="SpriteVisuals\新文件夹\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Commands\EmptyClass.cs" />
+    <Compile Remove="Commands\MoveRightCommand %28copy%29.cs" />
+    <Compile Remove="Commands\MoveRightCommand %28copy%29.cs" />
+    <Compile Remove="Commands\JumpCommand %28copy%29.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\tilemap.json" />
+  </ItemGroup>
+  <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
+    <Message Text="Restoring dotnet tools" Importance="High" />
+    <Exec Command="dotnet tool restore" />
+  </Target>
+</Project>
